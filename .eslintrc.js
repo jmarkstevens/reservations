@@ -1,7 +1,11 @@
 module.exports = {
-  parser: 'babel-eslint',
+  env: {
+    jest: true,
+  },
   extends: 'airbnb',
+  parser: 'babel-eslint',
   plugins: ['react', 'flowtype', 'jsx-a11y', 'import'],
+  root: true,
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/prefer-stateless-function': [2, { ignorePureComponents: true }],
@@ -15,8 +19,6 @@ module.exports = {
         peerDependencies: false,
       },
     ],
-  },
-  env: {
-    jest: true,
+    semi: ['error', 'never'],
   },
 }
