@@ -1,14 +1,13 @@
 import gql from 'graphql-tag'
 
-export const postsQuery = gql`
-  {
-    posts {
+export const reservationsQuery = gql`
+  query reservations($arrivalDate: String!) {
+    reservations(where: { arrivalDate: $arrivalDate }) {
       id
-      title
-      votes
-      author {
-        lastName
-      }
+      name
+      hotelName
+      arrivalDate
+      departureDate
     }
   }
 `

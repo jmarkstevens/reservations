@@ -17,11 +17,22 @@ const styles = StyleSheet.create({
   },
 })
 
-const ReservationList = () => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>Welcome to React Native!</Text>
-    <Text style={styles.instructions}>This is the List Reservations Component</Text>
-  </View>
-)
+type Reservation = {
+  arrivalDate: string,
+  departureDate: string,
+  hotelName: string,
+  id: string,
+  name: string,
+}
+type Props = { data: { reservations: Array<Reservation> } }
+const ReservationList = ({ data: { reservations } }: Props) => {
+  console.log('ReservationList props:', reservations)
+  return (
+    <View style={styles.container}>
+      <Text style={styles.welcome}>Welcome to React Native!</Text>
+      <Text style={styles.instructions}>This is the List Reservations Component</Text>
+    </View>
+  )
+}
 
 export default ReservationList

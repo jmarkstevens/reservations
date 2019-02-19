@@ -1,3 +1,3 @@
 // @flow
 
-export { postsQuery, upvoteMutation } from './gql'
+export { reservationsQuery, upvoteMutation } from './gql'
