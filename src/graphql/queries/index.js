@@ -1,3 +1,3 @@
 // @flow
 
-export { default } from './staticClient'
+export { postsQuery, upvoteMutation } from './gql'

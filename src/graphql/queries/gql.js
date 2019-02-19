@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag'
 
 export const postsQuery = gql`
   {
@@ -11,7 +11,7 @@ export const postsQuery = gql`
       }
     }
   }
-`;
+`
 
 export const upvoteMutation = gql`
   mutation upvotePost($postId: Int!, $inVote: Int) {
@@ -24,7 +24,7 @@ export const upvoteMutation = gql`
       }
     }
   }
-`;
+`
 
 export const upvotedMutation = gql`
   mutation setUpvotedPost(
@@ -35,15 +35,10 @@ export const upvotedMutation = gql`
     $upvotePost_author_lastName: String
     $upvotePost_author__typename: String
   ) {
-    setUpvotedPost(
-      id: $id,
-      title: $title,
-      votes: $votes,
-      author: $author,
-      __typename: $__typename
-    ) @client
+    setUpvotedPost(id: $id, title: $title, votes: $votes, author: $author, __typename: $__typename)
+      @client
   }
-`;
+`
 
 export const getUpvotedPost = gql`
   {
@@ -56,4 +51,4 @@ export const getUpvotedPost = gql`
       }
     }
   }
-`;
+`
