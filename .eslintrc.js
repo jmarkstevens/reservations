@@ -1,5 +1,22 @@
 module.exports = {
-  "parser": "babel-eslint",
-  "extends": "airbnb-base"
-  "plugins": ["jest", "react", "jsx-a11y", "import"],
-};
+  parser: 'babel-eslint',
+  extends: 'airbnb',
+  plugins: ['react', 'flowtype', 'jsx-a11y', 'import'],
+  rules: {
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/prefer-stateless-function': [2, { ignorePureComponents: true }],
+    'react/forbid-prop-types': [0, { forbid: [] }],
+    'import/extensions': [1, 'never', { svg: 'always' }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true,
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
+    ],
+  },
+  env: {
+    jest: true,
+  },
+}
