@@ -58,16 +58,17 @@
     }
   },
   "jest": {
-    "preset": "react-native",
-    "testMatch": [
-      "**/?(*.)test.js?(x)"
+    "collectCoverageFrom": [
+      "**/src/**/*.js"
     ],
+    "preset": "react-native",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
     "setupFiles": [
       "<rootDir>/jest/setup.js"
-    ]
+    ],
+    "testRegex": "\\.test\\.js$"
   },
   "lint-staged": {
     "*.js": [
