@@ -1,6 +1,6 @@
 // @flow
 
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
 import ReservationList from '../screens/reservation-list'
 import ReservationAdd from '../screens/reservation-add'
@@ -12,10 +12,9 @@ const Routes = {
 
 const NavigatorConfiguration = {
   initialRouteName: 'rReservationList',
-  headerMode: 'none',
   mode: 'modal',
 }
 
 const StackNavigator = createStackNavigator(Routes, NavigatorConfiguration)
 
-export default StackNavigator
+export default createAppContainer(StackNavigator)
