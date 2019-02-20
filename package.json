@@ -25,6 +25,7 @@
     "react": "16.6.3",
     "react-apollo": "^2.4.1",
     "react-native": "0.58.5",
+    "react-native-datepicker": "^1.7.2",
     "react-native-gesture-handler": "^1.0.15",
     "react-navigation": "^3.3.0"
   },
