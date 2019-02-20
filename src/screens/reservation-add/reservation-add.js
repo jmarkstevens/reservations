@@ -1,7 +1,15 @@
 // @flow
 
-import React from 'react'
+import * as React from 'react'
 
 import ReservationAdd from '../../containers/reservation-add'
 
-export default () => <ReservationAdd />
+export default class ReservationAddScreen extends React.PureComponent<{}> {
+  static navigationOptions = {
+    title: 'New Reservation',
+  }
+
+  render(): React.Node {
+    return <ReservationAdd />
+  }
+}
