@@ -1,7 +1,8 @@
 // @flow
 
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, View } from 'react-native'
+import { NavigationScreenProp, withNavigation } from 'react-navigation'
 
 const styles = StyleSheet.create({
   container: {
@@ -10,17 +11,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
 })
 
-const ReservationAdd = () => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>Welcome to React Native!</Text>
-  </View>
-)
+type Reservation = {
+  arrivalDate: string,
+  departureDate: string,
+  hotelName: string,
+  name: string,
+}
 
-export default ReservationAdd
+type Props = {
+  mutate: { variables: Reservation } => Promise<void>,
+  navigation: NavigationScreenProp<void>,
+}
+class ReservationAdd extends React.Component<Props> {
+  onSave = (): void => {
+    const { mutate } = this.props
+    mutate({
+      variables: {
+        arrivalDate: 'post.id',
+        departureDate: 'newVote',
+        hotelName: 'post.id',
+        name: 'post.id',
+      },
+    }).then(() => {
+      const { navigation } = this.props
+      const { goBack } = navigation
+      goBack()
+    })
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Button color="#fff" onPress={this.onSave} title="Save" />
+      </View>
+    )
+  }
+}
+
+export default withNavigation(ReservationAdd)
