@@ -14,11 +14,29 @@ const styles = StyleSheet.create({
   },
 })
 
-type Props = { navigation: NavigationScreenProp<void> }
+type Props = { navigation: NavigationScreenProp<void>, refetch: () => void }
 class Footer extends React.PureComponent<Props> {
+  static didFocusSubscription: *
+
+  focusReturned = (): void => {
+    const { refetch } = this.props
+    refetch()
+
+    // $FlowFixMe doesn't like static
+    this.didFocusSubscription.remove()
+  }
+
   goToReservationAdd = (): void => {
     const { navigation } = this.props
-    const { navigate } = navigation
+    const { addListener, navigate } = navigation
+    // $FlowFixMe doesn't like static
+    this.didFocusSubscription = addListener(
+      'didFocus',
+      (): void => {
+        this.focusReturned()
+      },
+    )
+
     navigate('rReservationAdd')
   }
 
