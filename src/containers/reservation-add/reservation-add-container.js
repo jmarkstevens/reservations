@@ -4,8 +4,8 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 
 import { createReservation } from '../../graphql/queries'
-import ReservationAdd from '../../components/reservation-add'
+import ReservationAddComponent from '../../components/reservation-add'
 
-const ReservationAddContainer = props => <ReservationAdd {...props} />
+const ReservationAddContainer = props => <ReservationAddComponent {...props} />
 
 export default graphql(createReservation)(ReservationAddContainer)
