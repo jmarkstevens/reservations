@@ -12,7 +12,6 @@ const Routes = {
 
 const NavigatorConfiguration = {
   initialRouteName: 'rReservationList',
-  mode: 'modal',
 }
 
 const StackNavigator = createStackNavigator(Routes, NavigatorConfiguration)
