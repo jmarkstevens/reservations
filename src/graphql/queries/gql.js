@@ -15,15 +15,15 @@ export const reservationsQuery = gql`
 export const createReservation = gql`
   mutation createReservation(
     $name: String!
-    $hotelName: String!
-    $arrivalDate: String!
-    $departureDate: String!
+    $hotelName: String!,
+    $arrivalDate: String!,
+    $departureDate: String!,
   ) {
     createReservation(
-      name: $name
-      hotelName: $hotelName
-      arrivalDate: $arrivalDate
-      departureDate: $departureDate
+      data: {name: $name,
+      hotelName: $hotelName,
+      arrivalDate: $arrivalDate,
+      departureDate: $departureDate}
     ) {
       id
       name
