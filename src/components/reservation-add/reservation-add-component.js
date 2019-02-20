@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
 const ReservationAdd = () => (
   <View style={styles.container}>
     <Text style={styles.welcome}>Welcome to React Native!</Text>
-    <Text style={styles.instructions}>This is the Add Reservations Component</Text>
   </View>
 )
 
