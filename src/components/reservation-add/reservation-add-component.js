@@ -1,17 +1,46 @@
 // @flow
 
 import React from 'react'
-import { Button, StyleSheet, View } from 'react-native'
+import {
+  Button, Picker, StyleSheet, Text, TextInput, View,
+} from 'react-native'
 import { NavigationScreenProp, withNavigation } from 'react-navigation'
+import DatePicker from 'react-native-datepicker'
+
+import HotelList from './hotelList'
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    alignSelf: 'center',
+    backgroundColor: '#888',
+    borderRadius: 15,
+    marginBottom: 3,
+    marginTop: 30,
+    paddingHorizontal: 10,
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  picker: {
+    width: 260,
+  },
+  rowView: {
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    alignSelf: 'stretch',
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    paddingVertical: 10,
   },
 })
+
+const initState = {
+  arrivalDate: '',
+  departureDate: '',
+  hotelName: '',
+  name: '',
+}
+
+const { Item } = Picker
 
 type Reservation = {
   arrivalDate: string,
@@ -21,19 +50,31 @@ type Reservation = {
 }
 
 type Props = {
-  mutate: { variables: Reservation } => Promise<void>,
+  mutate: ({ variables: Reservation }) => Promise<void>,
   navigation: NavigationScreenProp<void>,
 }
-class ReservationAdd extends React.Component<Props> {
+type State = {
+  arrivalDate: string,
+  departureDate: string,
+  hotelName: string,
+  name: string,
+}
+class ReservationAddComponent extends React.Component<Props, State> {
+  state = initState
+
   onSave = (): void => {
     const { mutate } = this.props
+    const {
+      arrivalDate, departureDate, hotelName, name,
+    } = this.state
+    const reservation = {
+      name,
+      hotelName,
+      arrivalDate,
+      departureDate,
+    }
     mutate({
-      variables: {
-        arrivalDate: 'post.id',
-        departureDate: 'newVote',
-        hotelName: 'post.id',
-        name: 'post.id',
-      },
+      variables: reservation,
     }).then(() => {
       const { navigation } = this.props
       const { goBack } = navigation
@@ -42,12 +83,91 @@ class ReservationAdd extends React.Component<Props> {
   }
 
   render() {
+    const {
+      arrivalDate, departureDate, hotelName, name,
+    } = this.state
+    const hotelList = HotelList.map(hotel => <Item key={hotel} label={hotel} value={hotel} />)
     return (
       <View style={styles.container}>
-        <Button color="#fff" onPress={this.onSave} title="Save" />
+        <View style={styles.rowView}>
+          <Text style={styles.text}>Name: </Text>
+          <TextInput
+            autoCorrect={false}
+            enablesReturnKeyAutomatically
+            maxLength={60}
+            onChangeText={text => this.setState({ name: text })}
+            placeholder="Enter Name"
+            value={name}
+          />
+        </View>
+        <View style={styles.rowView}>
+          <Text style={styles.text}>Hotel: </Text>
+          <Picker
+            style={styles.picker}
+            selectedValue={hotelName}
+            onValueChange={value => this.setState({ hotelName: value })}
+          >
+            {hotelList}
+          </Picker>
+        </View>
+        <View style={styles.rowView}>
+          <Text style={styles.text}> Arrive: </Text>
+          <DatePicker
+            style={{ width: 200 }}
+            date={arrivalDate}
+            mode="date"
+            placeholder="arrival date"
+            format="M/DD/YYYY"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateIcon: {
+                position: 'absolute',
+                left: 0,
+                top: 4,
+                marginLeft: 0,
+              },
+              dateInput: {
+                marginLeft: 36,
+              },
+            }}
+            onDateChange={(date) => {
+              this.setState({ arrivalDate: date })
+            }}
+          />
+        </View>
+        <View style={styles.rowView}>
+          <Text style={styles.text}>Depart: </Text>
+          <DatePicker
+            style={{ width: 200 }}
+            date={departureDate}
+            mode="date"
+            placeholder="departure date"
+            format="M/DD/YYYY"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateIcon: {
+                position: 'absolute',
+                left: 0,
+                top: 4,
+                marginLeft: 0,
+              },
+              dateInput: {
+                marginLeft: 36,
+              },
+            }}
+            onDateChange={(date) => {
+              this.setState({ departureDate: date })
+            }}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button color="#fff" onPress={this.onSave} title="Save" />
+        </View>
       </View>
     )
   }
 }
 
-export default withNavigation(ReservationAdd)
+export default withNavigation(ReservationAddComponent)
