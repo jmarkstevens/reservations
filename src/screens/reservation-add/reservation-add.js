@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 
-import ReservationAdd from '../../containers/reservation-add'
+import ReservationAddContainer from '../../containers/reservation-add'
 
 export default class ReservationAddScreen extends React.PureComponent<{}> {
   static navigationOptions = {
@@ -10,6 +10,6 @@ export default class ReservationAddScreen extends React.PureComponent<{}> {
   }
 
   render(): React.Node {
-    return <ReservationAdd />
+    return <ReservationAddContainer />
   }
 }
