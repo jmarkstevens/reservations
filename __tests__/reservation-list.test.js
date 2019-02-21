@@ -2,7 +2,7 @@ import { FlatList } from 'react-native'
 import React from 'react'
 import { expect as expectChai } from 'chai'
 import { shallow } from 'enzyme'
-import ReservationListComponent from '../src/components/reservation-list'
+import ReservationListComponent from '../src/components/reservations/reservation-list'
 
 const reservations = [
   {

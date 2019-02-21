@@ -3,9 +3,9 @@
 import React from 'react'
 import { FlatList, SafeAreaView, StyleSheet } from 'react-native'
 
-import Divider from '../common/divider'
+import Divider from '../../common/divider'
 import Footer from './footer'
-import Header from '../common/header'
+import Header from '../../common/header'
 import RenderItem from './render-list-item'
 
 const styles = StyleSheet.create({

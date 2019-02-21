@@ -59,7 +59,7 @@ type State = {
   hotelName: string,
   name: string,
 }
-class ReservationAddComponent extends React.Component<Props, State> {
+class ReservationAddComponent extends React.PureComponent<Props, State> {
   state = initState
 
   onSave = (): void => {
