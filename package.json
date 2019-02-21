@@ -67,13 +67,16 @@
       "**/src/**/*.js"
     ],
     "preset": "react-native",
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
     "setupFiles": [
       "<rootDir>/jest/setup.js"
     ],
-    "testRegex": "\\.test\\.js$"
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "testRegex": "\\.test\\.js$",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ]
   },
   "lint-staged": {
     "*.js": [
