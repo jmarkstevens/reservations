@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ReservationListComponent> Structure renders correctly 1`] = `
+exports[`<ReservationListComponent> matches snapshot 1`] = `
 <SafeAreaView
   style={
     Object {
@@ -14,7 +14,29 @@ exports[`<ReservationListComponent> Structure renders correctly 1`] = `
   />
   <FlatList
     ItemSeparatorComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "arrivalDate": "02/20/2019",
+          "departureDate": "02/21/2019",
+          "hotelName": "Hilton San Diego",
+          "id": "testid",
+          "name": "Mark Stevens",
+        },
+      ]
+    }
     disableVirtualization={false}
+    extraData={
+      Array [
+        Object {
+          "arrivalDate": "02/20/2019",
+          "departureDate": "02/21/2019",
+          "hotelName": "Hilton San Diego",
+          "id": "testid",
+          "name": "Mark Stevens",
+        },
+      ]
+    }
     horizontal={false}
     initialNumToRender={10}
     keyExtractor={[Function]}
